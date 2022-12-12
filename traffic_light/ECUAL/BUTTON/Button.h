@@ -11,6 +11,9 @@
 
 #include "../../Utilities/bit_manipulation.h"
 #include "../../Utilities/types.h"
+#include "../../MCAL/GPIO/GPIO.h"
+#include "../../MCAL/EXINT/EXINT.h"
+#include "../../MCAL/TIM0/TIM0.h"
 
 //Types
 typedef struct

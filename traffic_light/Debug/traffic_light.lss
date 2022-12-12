@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000190  00000000  00000000  00000d9c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001add  00000000  00000000  00000f2c  2**0
+  6 .debug_info   00001adc  00000000  00000000  00000f2c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000bb6  00000000  00000000  00002a09  2**0
+  7 .debug_abbrev 00000ba7  00000000  00000000  00002a08  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000d4e  00000000  00000000  000035bf  2**0
+  8 .debug_line   00000d8a  00000000  00000000  000035af  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000348  00000000  00000000  00004310  2**2
+  9 .debug_frame  00000348  00000000  00000000  0000433c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000007eb  00000000  00000000  00004658  2**0
+ 10 .debug_str    0000082c  00000000  00000000  00004684  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000dc6  00000000  00000000  00004e43  2**0
+ 11 .debug_loc    00000dc6  00000000  00000000  00004eb0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000001f8  00000000  00000000  00005c09  2**0
+ 12 .debug_ranges 000001f8  00000000  00000000  00005c76  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -528,7 +528,7 @@ ISR(INT0_vect)
  322:	18 95       	reti
 
 00000324 <BUTTON_init>:
-#include "../../MCAL/GPIO/GPIO.h"
+
 #include "Button.h"
 
 
@@ -547,12 +547,6 @@ void BUTTON_init(ST_Button* Ptr_stButton, EN_Port port, EN_Pin pin)
  334:	08 95       	ret
 
 00000336 <LED_init>:
-}
-
-
-void LED_toggle( ST_Led* Ptr_stLed )
-{
-	GPIO_pinToggle(Ptr_stLed->Port, Ptr_stLed->Pin);
  336:	fc 01       	movw	r30, r24
  338:	86 2f       	mov	r24, r22
  33a:	64 2f       	mov	r22, r20
@@ -579,12 +573,6 @@ void LED_toggle( ST_Led* Ptr_stLed )
  362:	08 95       	ret
 
 00000364 <LED_read>:
-}
-
-
-uint8_t LED_read( ST_Led* Ptr_stLed )
-{
-	return GPIO_getPinValue(Ptr_stLed->Port, Ptr_stLed->Pin);
  364:	fc 01       	movw	r30, r24
  366:	61 81       	ldd	r22, Z+1	; 0x01
  368:	80 81       	ld	r24, Z
@@ -607,109 +595,68 @@ int main(void)
  37c:	08 95       	ret
 
 0000037e <EXINIT_init>:
-#include "../../Utilities/register.h"
-#include "EXINT.h"
-
-void EXINIT_init(EXINT_Interrupt extInt, EXINIT_Type intType)
-{
-	SET_BIT(SREG, I);          // Enable Global Interrupt
  37e:	9f b7       	in	r25, 0x3f	; 63
  380:	90 68       	ori	r25, 0x80	; 128
  382:	9f bf       	out	0x3f, r25	; 63
-
-	switch(extInt)
  384:	81 30       	cpi	r24, 0x01	; 1
  386:	d1 f0       	breq	.+52     	; 0x3bc <EXINIT_init+0x3e>
  388:	18 f0       	brcs	.+6      	; 0x390 <EXINIT_init+0x12>
  38a:	82 30       	cpi	r24, 0x02	; 2
  38c:	69 f1       	breq	.+90     	; 0x3e8 <EXINIT_init+0x6a>
  38e:	08 95       	ret
-	{
-		case EXINT_INT0:
-		if (READ_BIT(intType, ISC0))
  390:	60 ff       	sbrs	r22, 0
  392:	04 c0       	rjmp	.+8      	; 0x39c <EXINIT_init+0x1e>
-		SET_BIT(MCUCR, ISC00);
  394:	85 b7       	in	r24, 0x35	; 53
  396:	81 60       	ori	r24, 0x01	; 1
  398:	85 bf       	out	0x35, r24	; 53
  39a:	03 c0       	rjmp	.+6      	; 0x3a2 <EXINIT_init+0x24>
-		else
-		CLR_BIT(MCUCR, ISC00);
  39c:	85 b7       	in	r24, 0x35	; 53
  39e:	8e 7f       	andi	r24, 0xFE	; 254
  3a0:	85 bf       	out	0x35, r24	; 53
-
-		if (READ_BIT(intType, ISC1))
  3a2:	61 ff       	sbrs	r22, 1
  3a4:	04 c0       	rjmp	.+8      	; 0x3ae <EXINIT_init+0x30>
-		SET_BIT(MCUCR, ISC01);
  3a6:	85 b7       	in	r24, 0x35	; 53
  3a8:	82 60       	ori	r24, 0x02	; 2
  3aa:	85 bf       	out	0x35, r24	; 53
  3ac:	03 c0       	rjmp	.+6      	; 0x3b4 <EXINIT_init+0x36>
-		else
-		CLR_BIT(MCUCR, ISC01);
  3ae:	85 b7       	in	r24, 0x35	; 53
  3b0:	8d 7f       	andi	r24, 0xFD	; 253
  3b2:	85 bf       	out	0x35, r24	; 53
-		SET_BIT(GICR, INT0);
  3b4:	8b b7       	in	r24, 0x3b	; 59
  3b6:	80 64       	ori	r24, 0x40	; 64
  3b8:	8b bf       	out	0x3b, r24	; 59
-		break;
  3ba:	08 95       	ret
-
-		case EXINT_INT1:
-		if (READ_BIT(intType, ISC0))
  3bc:	60 ff       	sbrs	r22, 0
  3be:	04 c0       	rjmp	.+8      	; 0x3c8 <EXINIT_init+0x4a>
-		SET_BIT(MCUCR, ISC10);
  3c0:	85 b7       	in	r24, 0x35	; 53
  3c2:	84 60       	ori	r24, 0x04	; 4
  3c4:	85 bf       	out	0x35, r24	; 53
  3c6:	03 c0       	rjmp	.+6      	; 0x3ce <EXINIT_init+0x50>
-		else
-		CLR_BIT(MCUCR, ISC10);
  3c8:	85 b7       	in	r24, 0x35	; 53
  3ca:	8b 7f       	andi	r24, 0xFB	; 251
  3cc:	85 bf       	out	0x35, r24	; 53
-
-		if (READ_BIT(intType, ISC1))
  3ce:	61 ff       	sbrs	r22, 1
  3d0:	04 c0       	rjmp	.+8      	; 0x3da <EXINIT_init+0x5c>
-		SET_BIT(MCUCR, ISC11);
  3d2:	85 b7       	in	r24, 0x35	; 53
  3d4:	88 60       	ori	r24, 0x08	; 8
  3d6:	85 bf       	out	0x35, r24	; 53
  3d8:	03 c0       	rjmp	.+6      	; 0x3e0 <EXINIT_init+0x62>
-		else
-		CLR_BIT(MCUCR, ISC11);
  3da:	85 b7       	in	r24, 0x35	; 53
  3dc:	87 7f       	andi	r24, 0xF7	; 247
  3de:	85 bf       	out	0x35, r24	; 53
-		SET_BIT(GICR, INT1);
  3e0:	8b b7       	in	r24, 0x3b	; 59
  3e2:	80 68       	ori	r24, 0x80	; 128
  3e4:	8b bf       	out	0x3b, r24	; 59
-		break;
  3e6:	08 95       	ret
-		
-		case EXINT_INT2:
-		if (READ_BIT(intType, ISC1))
  3e8:	61 ff       	sbrs	r22, 1
  3ea:	04 c0       	rjmp	.+8      	; 0x3f4 <EXINIT_init+0x76>
-		SET_BIT(MCUCSR, ISC2);
  3ec:	84 b7       	in	r24, 0x34	; 52
  3ee:	80 64       	ori	r24, 0x40	; 64
  3f0:	84 bf       	out	0x34, r24	; 52
  3f2:	03 c0       	rjmp	.+6      	; 0x3fa <EXINIT_init+0x7c>
-		else
-		CLR_BIT(MCUCSR, ISC2);
  3f4:	84 b7       	in	r24, 0x34	; 52
  3f6:	8f 7b       	andi	r24, 0xBF	; 191
  3f8:	84 bf       	out	0x34, r24	; 52
-		SET_BIT(GICR, INT2);
  3fa:	8b b7       	in	r24, 0x3b	; 59
  3fc:	80 62       	ori	r24, 0x20	; 32
  3fe:	8b bf       	out	0x3b, r24	; 59
@@ -1013,10 +960,10 @@ void EXINIT_init(EXINT_Interrupt extInt, EXINIT_Type intType)
  63e:	08 95       	ret
 
 00000640 <GPIO_getPinValue>:
+
 uint8_t GPIO_getPinValue(EN_Port port, EN_Pin pin)
 {
-	// 1. Define temp variable to put pin value in it
-	// 2. Determine which Port (PORT_A, PORT_B, PORT_C, PORT_D)
+
 	uint8_t value  = 0 ;
 	switch(port)
  640:	81 30       	cpi	r24, 0x01	; 1
@@ -1079,11 +1026,11 @@ uint8_t GPIO_getPinValue(EN_Port port, EN_Pin pin)
  694:	81 70       	andi	r24, 0x01	; 1
 		break;
  696:	08 95       	ret
-*/
+
+
 uint8_t GPIO_getPinValue(EN_Port port, EN_Pin pin)
 {
-	// 1. Define temp variable to put pin value in it
-	// 2. Determine which Port (PORT_A, PORT_B, PORT_C, PORT_D)
+
 	uint8_t value  = 0 ;
  698:	80 e0       	ldi	r24, 0x00	; 0
 		
@@ -1095,12 +1042,6 @@ uint8_t GPIO_getPinValue(EN_Port port, EN_Pin pin)
  69a:	08 95       	ret
 
 0000069c <TIM0_delay_ms>:
-	return TIM0;
-}
-
-
-void TIM0_delay_ms( uint32_t delay )
-{
  69c:	4f 92       	push	r4
  69e:	5f 92       	push	r5
  6a0:	6f 92       	push	r6
@@ -1122,12 +1063,6 @@ void TIM0_delay_ms( uint32_t delay )
  6c0:	00 d0       	rcall	.+0      	; 0x6c2 <TIM0_delay_ms+0x26>
  6c2:	cd b7       	in	r28, 0x3d	; 61
  6c4:	de b7       	in	r29, 0x3e	; 62
-	
-
-	//Compute T_tick and N_overflows
-	T_tick      = 1.0*TIM0_PRESCALER / F_CPU;
-	T_max       = T_tick * 256 * 1000;
-	N_overflows = ceil(delay / T_max);
  6c6:	0e 94 67 05 	call	0xace	; 0xace <__floatundisf>
  6ca:	69 83       	std	Y+1, r22	; 0x01
  6cc:	7a 83       	std	Y+2, r23	; 0x02
@@ -1156,13 +1091,9 @@ void TIM0_delay_ms( uint32_t delay )
  700:	67 2e       	mov	r6, r23
  702:	58 2e       	mov	r5, r24
  704:	49 2e       	mov	r4, r25
-	
-	//Compute T_init
-	if (N_overflows == 1)
  706:	a1 e0       	ldi	r26, 0x01	; 1
  708:	0e 94 50 06 	call	0xca0	; 0xca0 <__cmpdi2_s8>
  70c:	b1 f4       	brne	.+44     	; 0x73a <TIM0_delay_ms+0x9e>
-	T_init = ceil(1.0*(T_max - delay)/(T_tick));
  70e:	29 81       	ldd	r18, Y+1	; 0x01
  710:	3a 81       	ldd	r19, Y+2	; 0x02
  712:	4b 81       	ldd	r20, Y+3	; 0x03
@@ -1181,8 +1112,6 @@ void TIM0_delay_ms( uint32_t delay )
  732:	0e 94 38 05 	call	0xa70	; 0xa70 <__fixunssfsi>
  736:	a6 2f       	mov	r26, r22
  738:	2d c0       	rjmp	.+90     	; 0x794 <TIM0_delay_ms+0xf8>
-	else
-	T_init = ceil(T_max - ((1.0*delay/T_tick)/(1.0*N_overflows)));
  73a:	2d eb       	ldi	r18, 0xBD	; 189
  73c:	37 e3       	ldi	r19, 0x37	; 55
  73e:	46 e8       	ldi	r20, 0x86	; 134
@@ -1222,40 +1151,20 @@ void TIM0_delay_ms( uint32_t delay )
  78a:	0e 94 73 04 	call	0x8e6	; 0x8e6 <ceil>
  78e:	0e 94 38 05 	call	0xa70	; 0xa70 <__fixunssfsi>
  792:	a6 2f       	mov	r26, r22
-
-	//Clear TCCR0
-	TCCR0  = 0x00;
  794:	13 be       	out	0x33, r1	; 51
-
-
-	//Set Clock Source
-	TCCR0  |=  TIM0_CLOCK_SOURCE;
  796:	83 b7       	in	r24, 0x33	; 51
  798:	81 60       	ori	r24, 0x01	; 1
  79a:	83 bf       	out	0x33, r24	; 51
-	
-	//Delay by busy wait
-	for(int i=0; i< N_overflows ; i++)
  79c:	e0 e0       	ldi	r30, 0x00	; 0
  79e:	f0 e0       	ldi	r31, 0x00	; 0
  7a0:	08 c0       	rjmp	.+16     	; 0x7b2 <TIM0_delay_ms+0x116>
-	{
-		TCNT0 = T_init;
  7a2:	a2 bf       	out	0x32, r26	; 50
-		while( READ_BIT(TIFR, TIFR_TOV0) == 0 );  //Busy Wait
  7a4:	08 b6       	in	r0, 0x38	; 56
  7a6:	00 fe       	sbrs	r0, 0
  7a8:	fd cf       	rjmp	.-6      	; 0x7a4 <TIM0_delay_ms+0x108>
-		SET_BIT(TIFR, TIFR_TOV0);                //Clear Overflow flag
  7aa:	88 b7       	in	r24, 0x38	; 56
  7ac:	81 60       	ori	r24, 0x01	; 1
  7ae:	88 bf       	out	0x38, r24	; 56
-
-	//Set Clock Source
-	TCCR0  |=  TIM0_CLOCK_SOURCE;
-	
-	//Delay by busy wait
-	for(int i=0; i< N_overflows ; i++)
  7b0:	31 96       	adiw	r30, 0x01	; 1
  7b2:	2d 81       	ldd	r18, Y+5	; 0x05
  7b4:	3e 81       	ldd	r19, Y+6	; 0x06
@@ -1278,12 +1187,6 @@ void TIM0_delay_ms( uint32_t delay )
  7d6:	0e 94 47 06 	call	0xc8e	; 0xc8e <__cmpdi2>
  7da:	09 f0       	breq	.+2      	; 0x7de <TIM0_delay_ms+0x142>
  7dc:	10 f7       	brcc	.-60     	; 0x7a2 <TIM0_delay_ms+0x106>
-	{
-		TCNT0 = T_init;
-		while( READ_BIT(TIFR, TIFR_TOV0) == 0 );  //Busy Wait
-		SET_BIT(TIFR, TIFR_TOV0);                //Clear Overflow flag
-	}
-}
  7de:	26 96       	adiw	r28, 0x06	; 6
  7e0:	0f b6       	in	r0, 0x3f	; 63
  7e2:	f8 94       	cli

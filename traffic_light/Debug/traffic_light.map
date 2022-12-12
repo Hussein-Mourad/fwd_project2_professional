@@ -76,11 +76,51 @@ Discarded input sections
  .bss           0x00000000        0x0 ECUAL/BUTTON/Button.o
  .text.BUTTON_read
                 0x00000000        0xc ECUAL/BUTTON/Button.o
+ .text          0x00000000        0x0 ECUAL/BUTTON/test/test.o
+ .data          0x00000000        0x0 ECUAL/BUTTON/test/test.o
+ .bss           0x00000000        0x0 ECUAL/BUTTON/test/test.o
+ .text.BUTTON_init_test
+                0x00000000       0x2a ECUAL/BUTTON/test/test.o
+ .text.BUTTON_read_test
+                0x00000000       0x30 ECUAL/BUTTON/test/test.o
+ .debug_info    0x00000000      0x219 ECUAL/BUTTON/test/test.o
+ .debug_abbrev  0x00000000      0x113 ECUAL/BUTTON/test/test.o
+ .debug_loc     0x00000000       0xc9 ECUAL/BUTTON/test/test.o
+ .debug_aranges
+                0x00000000       0x28 ECUAL/BUTTON/test/test.o
+ .debug_ranges  0x00000000       0x18 ECUAL/BUTTON/test/test.o
+ .debug_line    0x00000000       0xe6 ECUAL/BUTTON/test/test.o
+ .debug_str     0x00000000      0x24d ECUAL/BUTTON/test/test.o
+ .comment       0x00000000       0x31 ECUAL/BUTTON/test/test.o
+ .debug_frame   0x00000000       0x54 ECUAL/BUTTON/test/test.o
  .text          0x00000000        0x0 ECUAL/LED/LED.o
  .data          0x00000000        0x0 ECUAL/LED/LED.o
  .bss           0x00000000        0x0 ECUAL/LED/LED.o
  .text.LED_toggle
                 0x00000000        0xc ECUAL/LED/LED.o
+ .text          0x00000000        0x0 ECUAL/LED/test/test.o
+ .data          0x00000000        0x0 ECUAL/LED/test/test.o
+ .bss           0x00000000        0x0 ECUAL/LED/test/test.o
+ .text.LED_init_test
+                0x00000000       0x2c ECUAL/LED/test/test.o
+ .text.LED_on_test
+                0x00000000       0x3e ECUAL/LED/test/test.o
+ .text.LED_of_test
+                0x00000000       0x3e ECUAL/LED/test/test.o
+ .text.LED_toggle_test
+                0x00000000       0x46 ECUAL/LED/test/test.o
+ .text.LED_read_test
+                0x00000000       0x36 ECUAL/LED/test/test.o
+ .debug_info    0x00000000      0x44e ECUAL/LED/test/test.o
+ .debug_abbrev  0x00000000      0x116 ECUAL/LED/test/test.o
+ .debug_loc     0x00000000      0x17b ECUAL/LED/test/test.o
+ .debug_aranges
+                0x00000000       0x40 ECUAL/LED/test/test.o
+ .debug_ranges  0x00000000       0x30 ECUAL/LED/test/test.o
+ .debug_line    0x00000000      0x182 ECUAL/LED/test/test.o
+ .debug_str     0x00000000      0x25c ECUAL/LED/test/test.o
+ .comment       0x00000000       0x31 ECUAL/LED/test/test.o
+ .debug_frame   0x00000000       0xb4 ECUAL/LED/test/test.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -89,6 +129,22 @@ Discarded input sections
  .bss           0x00000000        0x0 MCAL/EXINT/EXINT.o
  .text.EXINIT_disable
                 0x00000000       0x24 MCAL/EXINT/EXINT.o
+ .text          0x00000000        0x0 MCAL/EXINT/test/test.o
+ .data          0x00000000        0x0 MCAL/EXINT/test/test.o
+ .bss           0x00000000        0x0 MCAL/EXINT/test/test.o
+ .text.EXINIT_init_test
+                0x00000000        0xe MCAL/EXINT/test/test.o
+ .text.EXINIT_disable_test
+                0x00000000       0x1c MCAL/EXINT/test/test.o
+ .debug_info    0x00000000      0x134 MCAL/EXINT/test/test.o
+ .debug_abbrev  0x00000000       0x96 MCAL/EXINT/test/test.o
+ .debug_aranges
+                0x00000000       0x28 MCAL/EXINT/test/test.o
+ .debug_ranges  0x00000000       0x18 MCAL/EXINT/test/test.o
+ .debug_line    0x00000000       0xdf MCAL/EXINT/test/test.o
+ .debug_str     0x00000000      0x1fa MCAL/EXINT/test/test.o
+ .comment       0x00000000       0x31 MCAL/EXINT/test/test.o
+ .debug_frame   0x00000000       0x34 MCAL/EXINT/test/test.o
  .text          0x00000000        0x0 MCAL/GPIO/GPIO.o
  .data          0x00000000        0x0 MCAL/GPIO/GPIO.o
  .bss           0x00000000        0x0 MCAL/GPIO/GPIO.o
@@ -98,6 +154,31 @@ Discarded input sections
                 0x00000000       0x68 MCAL/GPIO/GPIO.o
  .text.GPIO_getPortValue
                 0x00000000       0xf0 MCAL/GPIO/GPIO.o
+ .text          0x00000000        0x0 MCAL/GPIO/test/test.o
+ .data          0x00000000        0x0 MCAL/GPIO/test/test.o
+ .bss           0x00000000        0x0 MCAL/GPIO/test/test.o
+ .text.GPIO_setPinMode_test
+                0x00000000       0x16 MCAL/GPIO/test/test.o
+ .text.GPIO_setPinValue_test
+                0x00000000        0xe MCAL/GPIO/test/test.o
+ .text.GPIO_setPortValue_test
+                0x00000000       0x1a MCAL/GPIO/test/test.o
+ .text.GPIO_pinToggle_test
+                0x00000000       0x22 MCAL/GPIO/test/test.o
+ .text.GPIO_getPinValue_test
+                0x00000000       0x1a MCAL/GPIO/test/test.o
+ .text.GPIO_getPortValue_test
+                0x00000000       0x1a MCAL/GPIO/test/test.o
+ .debug_info    0x00000000      0x322 MCAL/GPIO/test/test.o
+ .debug_abbrev  0x00000000       0xd3 MCAL/GPIO/test/test.o
+ .debug_loc     0x00000000       0x55 MCAL/GPIO/test/test.o
+ .debug_aranges
+                0x00000000       0x48 MCAL/GPIO/test/test.o
+ .debug_ranges  0x00000000       0x38 MCAL/GPIO/test/test.o
+ .debug_line    0x00000000      0x198 MCAL/GPIO/test/test.o
+ .debug_str     0x00000000      0x2c2 MCAL/GPIO/test/test.o
+ .comment       0x00000000       0x31 MCAL/GPIO/test/test.o
+ .debug_frame   0x00000000       0x74 MCAL/GPIO/test/test.o
  .text          0x00000000        0x0 MCAL/TIM0/TIM0.o
  .data          0x00000000        0x0 MCAL/TIM0/TIM0.o
  .bss           0x00000000        0x0 MCAL/TIM0/TIM0.o
@@ -265,10 +346,14 @@ Linker script and memory map
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
 LOAD APP/app.o
 LOAD ECUAL/BUTTON/Button.o
+LOAD ECUAL/BUTTON/test/test.o
 LOAD ECUAL/LED/LED.o
+LOAD ECUAL/LED/test/test.o
 LOAD main.o
 LOAD MCAL/EXINT/EXINT.o
+LOAD MCAL/EXINT/test/test.o
 LOAD MCAL/GPIO/GPIO.o
+LOAD MCAL/GPIO/test/test.o
 LOAD MCAL/TIM0/TIM0.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
@@ -725,7 +810,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1add
+.debug_info     0x00000000     0x1adc
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_info    0x000004e6      0x84c APP/app.o
@@ -733,10 +818,10 @@ END GROUP
  .debug_info    0x00000f2d      0x2ba ECUAL/LED/LED.o
  .debug_info    0x000011e7      0x1fc main.o
  .debug_info    0x000013e3      0x116 MCAL/EXINT/EXINT.o
- .debug_info    0x000014f9      0x356 MCAL/GPIO/GPIO.o
- .debug_info    0x0000184f      0x28e MCAL/TIM0/TIM0.o
+ .debug_info    0x000014f9      0x355 MCAL/GPIO/GPIO.o
+ .debug_info    0x0000184e      0x28e MCAL/TIM0/TIM0.o
 
-.debug_abbrev   0x00000000      0xbb6
+.debug_abbrev   0x00000000      0xba7
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_abbrev  0x000004a3      0x142 APP/app.o
@@ -744,19 +829,19 @@ END GROUP
  .debug_abbrev  0x000006e7      0x10b ECUAL/LED/LED.o
  .debug_abbrev  0x000007f2       0xc6 main.o
  .debug_abbrev  0x000008b8       0x96 MCAL/EXINT/EXINT.o
- .debug_abbrev  0x0000094e      0x114 MCAL/GPIO/GPIO.o
- .debug_abbrev  0x00000a62      0x154 MCAL/TIM0/TIM0.o
+ .debug_abbrev  0x0000094e      0x105 MCAL/GPIO/GPIO.o
+ .debug_abbrev  0x00000a53      0x154 MCAL/TIM0/TIM0.o
 
-.debug_line     0x00000000      0xd4e
+.debug_line     0x00000000      0xd8a
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116      0x2be APP/app.o
- .debug_line    0x000003d4       0xe5 ECUAL/BUTTON/Button.o
- .debug_line    0x000004b9      0x118 ECUAL/LED/LED.o
- .debug_line    0x000005d1       0xc2 main.o
- .debug_line    0x00000693      0x12f MCAL/EXINT/EXINT.o
- .debug_line    0x000007c2      0x376 MCAL/GPIO/GPIO.o
- .debug_line    0x00000b38      0x216 MCAL/TIM0/TIM0.o
+ .debug_line    0x00000116      0x2f7 APP/app.o
+ .debug_line    0x0000040d       0xd5 ECUAL/BUTTON/Button.o
+ .debug_line    0x000004e2      0x118 ECUAL/LED/LED.o
+ .debug_line    0x000005fa       0xd5 main.o
+ .debug_line    0x000006cf      0x12f MCAL/EXINT/EXINT.o
+ .debug_line    0x000007fe      0x376 MCAL/GPIO/GPIO.o
+ .debug_line    0x00000b74      0x216 MCAL/TIM0/TIM0.o
 
 .debug_frame    0x00000000      0x348
  *(.debug_frame)
@@ -768,22 +853,22 @@ END GROUP
  .debug_frame   0x000001bc       0x74 MCAL/GPIO/GPIO.o
  .debug_frame   0x00000230      0x118 MCAL/TIM0/TIM0.o
 
-.debug_str      0x00000000      0x7eb
+.debug_str      0x00000000      0x82c
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x356 APP/app.o
-                                0x367 (size before relaxing)
- .debug_str     0x000004ec       0x8d ECUAL/BUTTON/Button.o
-                                0x261 (size before relaxing)
- .debug_str     0x00000579       0x55 ECUAL/LED/LED.o
+ .debug_str     0x00000196      0x348 APP/app.o
+                                0x359 (size before relaxing)
+ .debug_str     0x000004de       0x8d ECUAL/BUTTON/Button.o
+                                0x253 (size before relaxing)
+ .debug_str     0x0000056b       0xa4 ECUAL/LED/LED.o
                                 0x273 (size before relaxing)
- .debug_str     0x000005ce       0x11 main.o
-                                0x25d (size before relaxing)
- .debug_str     0x000005df       0x50 MCAL/EXINT/EXINT.o
+ .debug_str     0x0000060f       0x11 main.o
+                                0x24f (size before relaxing)
+ .debug_str     0x00000620       0x50 MCAL/EXINT/EXINT.o
                                 0x20a (size before relaxing)
- .debug_str     0x0000062f       0x4b MCAL/GPIO/GPIO.o
-                                0x26e (size before relaxing)
- .debug_str     0x0000067a      0x171 MCAL/TIM0/TIM0.o
+ .debug_str     0x00000670       0x4b MCAL/GPIO/GPIO.o
+                                0x260 (size before relaxing)
+ .debug_str     0x000006bb      0x171 MCAL/TIM0/TIM0.o
                                 0x2e9 (size before relaxing)
 
 .debug_loc      0x00000000      0xdc6
