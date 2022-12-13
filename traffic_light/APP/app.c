@@ -90,7 +90,10 @@ void normal_mode()
 		
 	LED_on(&normal_redLED);
 	TIM0_delay_ms(5000);
-	LED_off(&normal_redLED);	
+	LED_off(&normal_redLED);
+	
+	blink_yellow(NORMAL_LIGHT);
+	LED_off(&normal_ylwLED);	
 }
 
 void pedastrain_mode()
